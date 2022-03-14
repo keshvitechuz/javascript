@@ -1,0 +1,249 @@
+<h3>
+	1. detailsGenerator
+
+	This function accepts 2 parameters name and age as a string. You need to return it as an object.
+	Example name="ashish" and age=25 should return { name: "ashish", age: 25 }
+</h3>
+<p id="p1"></p>
+
+<h3>2. arrayReverse
+
+Here you will have an array of numbers in params. you will need to reverse that array. for example [1,2,3] should be [3,2,1].</h3>
+<p id="p2"></p>
+
+<h3>
+3. arraySort
+
+Here you will have array of objects in params. You will need to sort the record in accending order by name.
+Example: 
+
+javascript
+const record = [
+    { id: 1, name: 'robert' },
+    { id: 2, name: 'downy' },
+    { id: 3, name: 'junior' },
+    { id: 4, name: 'captain' },
+  ]
+// This record should be sorted as
+[
+    { id: 4, name: 'captain' },
+    { id: 2, name: 'downy' },
+    { id: 3, name: 'junior' },
+    { id: 1, name: 'robert' },
+  ]
+</h3>
+
+<p>Out put in console</p>
+
+<h3>
+4. amendRecord
+
+This particular function is to ammend a new key inside existing array of objects. The first parameter is array of object and second parameter is object with name `points`:
+Example
+
+javascript
+const firstParam = [
+    { id: 1, name: 'robert' },
+    { id: 2, name: 'downy' },
+    { id: 3, name: 'junior' },
+    { id: 4, name: 'captain' },
+  ]
+const secondParam = {
+    robert: 5,
+    downy: 3,
+    junior: 1,
+    captain: 4
+}
+// The final output should be:
+[
+    { id: 1, name: 'robert', points: 5 },
+    { id: 2, name: 'downy', points: 3 },
+    { id: 3, name: 'junior', points: 1 },
+    { id: 4, name: 'captain', points: 4 },
+]
+</h3>
+
+<h3>
+5. filterByMaxPoints
+
+This function is based on previous function `amendRecord`. once you ammend the record, you need to call this function to get the object which has max points.
+
+Example: 
+javascript
+// From this record
+[
+    { id: 1, name: 'robert', points: 5 },
+    { id: 2, name: 'downy', points: 3 },
+    { id: 3, name: 'junior', points: 1 },
+    { id: 4, name: 'captain', points: 4 },
+]
+
+// It should return this object
+{ id: 1, name: 'robert', points: 5 }
+</h3>
+
+<p id="p5"></p>
+
+<h3>
+6. removeDuplicates
+
+Here you will have one parameter which is array of objects. You need to remove the record from the array which has duplicate name.
+
+Example: 
+
+javascript
+[
+    { id: 1, name: 'robert', points: 5 },
+    { id: 2, name: 'downy', points: 3 },
+    { id: 3, name: 'junior', points: 1 },
+    { id: 4, name: 'captain', points: 4 },
+    { id: 5, name: 'robert', points: 30 },
+]
+// This record has 2 records with name robert. So 1 record from these 2 should be deleted and the output should be:
+[
+    { id: 1, name: 'robert', points: 5 },
+    { id: 2, name: 'downy', points: 3 },
+    { id: 3, name: 'junior', points: 1 },
+    { id: 4, name: 'captain', points: 4 },
+]
+</h3>
+
+<p>Out put in console</p>
+
+<h3>
+7. countDuplicates
+
+Here you will have Array of numbers in your param and you need to count the duplicates in that array and pass it as an object as `count_NUMBER`. DO NOT USE for loop for this.
+
+Example:
+javascript
+// This array
+[1,3,2,2,5,6];
+// Should return this
+{
+    'count_1': 1,
+    'count_3': 1,
+    'count_2': 2,
+    'count_5': 1,
+    'count_6': 1,
+}
+</h3>
+
+<p>Out put in console</p>
+
+<script>
+// program 1
+let varObj = [{
+    name: 'ashish',
+    age: 25
+}];
+document.getElementById("p1").innerHTML =varObj;
+
+var splitting_array = ["ashish-25"];
+var split_objects = splitting_array.map(function(str) {
+  var box = str.split('-');
+  return {name: box[0], year: box[1]}
+});
+console.log("first program");
+console.log(split_objects);
+
+//program 2
+const numbers = [1,2,3];
+document.getElementById("p2").innerHTML = numbers.reverse();
+
+//program 3
+const arr = [
+{ id: 1, name: 'robert' },
+{ id: 2, name: 'downy' },
+{ id: 3, name: 'junior' },
+{ id: 4, name: 'captain' },
+];
+
+arr.sort((a, b) => a.name.normalize().localeCompare(b.name.normalize()));
+console.log("third program");
+console.log(arr);
+
+//program 4
+
+//var data = [];
+//const firstParam = [
+  //  { id: 1, name: 'robert' },
+   // { id: 2, name: 'downy' },
+   // { id: 3, name: 'junior' },
+   // { id: 4, name: 'captain' },
+ // ]
+//const secondParam = {
+  //  robert: 5,
+  //  downy: 3,
+  //  junior: 1,
+  //  captain: 4
+//}
+//var merged = _.map(firstParam, function(item) {
+  //  return _.assign(item, _.find(secondParam, ['name', item.name]));
+//});
+
+
+//program 5
+const data = getData();
+let
+  maxSoFar = 0,
+  id = "";
+
+// Updates the variables whenever a newer item is found
+data.tables.forEach(table => {
+  const time = parseInt(table.points);
+  if(time > maxSoFar){
+    maxSoFar = time; 
+    id = table.id;
+    name = table.name;
+    points = table.points;
+  }
+});
+// Logs the result
+console.log("{ id:"+ id+", name:"+ name+", points:"+ points+" }");
+document.getElementById("p5").innerHTML = "{ id:"+ id+", name:"+ name+", points:"+ points+" }";
+
+// Provides the original JSON
+function getData(){
+  return {
+    "tables": [
+      	{ id: 1, name: 'robert', points: 5 },
+    	{ id: 2, name: 'downy', points: 3 },
+   	{ id: 3, name: 'junior', points: 1 },
+    	{ id: 4, name: 'captain', points: 4 },
+    ]
+  }
+}
+
+//program 6
+
+const arr1 = [
+    { id: 1, name: 'robert', points: 5 },
+    { id: 2, name: 'downy', points: 3 },
+    { id: 3, name: 'junior', points: 1 },
+    { id: 4, name: 'captain', points: 4 },
+    { id: 5, name: 'robert', points: 30 },
+]
+
+var result = arr1.reduce((unique, o) => {
+    if(!unique.some(obj => obj.name === o.name)) {
+      unique.push(o);
+    }
+    return unique;
+},[]);
+console.log("sixth program");
+console.log(result);
+
+//program 7
+const arr2 = [1,3,2,2,5,6];
+const counts = {};
+arr2.forEach((x) => {
+  counts[x] = (counts[x] || 0) + 1;
+});
+console.log("seventh program");
+console.log(counts);
+</script>
+
+
+
+
